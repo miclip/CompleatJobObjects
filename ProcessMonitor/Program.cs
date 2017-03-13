@@ -35,16 +35,16 @@ namespace ProcessMonitor
    
             Task.Run(() =>
             {
-                //var currentStatus = JobObject.CompletionMsg.NoCompletionStatus;
-                //while (currentStatus!= JobObject.CompletionMsg.ActiveProcessZero)
-                //{
+                var currentStatus = JobObject.CompletionMsg.NoCompletionStatus;
+                while (currentStatus!= JobObject.CompletionMsg.ActiveProcessZero)
+                {
                     foreach (var msg in _jobObject.GetQueuedCompletionStatus())
                     {
                         Console.WriteLine($"Completion Message:{msg.ToString()}");
-                       // currentStatus = msg;
+                        currentStatus = msg;
                     }
 
-                //}
+                }
 
                 Console.WriteLine("Process no longer exists!");
             });
